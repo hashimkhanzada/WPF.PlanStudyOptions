@@ -113,5 +113,11 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PlanStudyOptionsLibrary\PlanStudyOptionsLibrary.csproj">
+      <Project>{99871dbb-11bb-4ae6-bb2c-7a938dd96343}</Project>
+      <Name>PlanStudyOptionsLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

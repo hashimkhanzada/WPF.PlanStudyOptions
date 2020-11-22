@@ -9,7 +9,10 @@ namespace PlanStudyOptions.WPF.ViewModels
 {
     public class ShellViewModel : Screen
     {
+        public ShellViewModel()
+        {
 
+        }
 
     }
 }

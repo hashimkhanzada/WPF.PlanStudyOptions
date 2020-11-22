@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>PlanStudyOptions.SqlDB</Name>
+    <Name>PlanStudyOptionsSqlDB</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{aeed2f76-06b7-4030-abbf-040d666f2861}</ProjectGuid>
