@@ -8,7 +8,6 @@ The goal with this new project is to recreate the old one from scratch, while fo
 
 
 #### Current Checklist
-- [x] Set up Simple Container as the DI System
 - [x] Set up MVVM with Caliburn Micro
 - [x] Set up Simple Container as the DI System
 - [x] Create Class Library
