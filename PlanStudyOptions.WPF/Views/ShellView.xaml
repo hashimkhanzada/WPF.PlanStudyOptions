@@ -5,7 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
         mc:Ignorable="d"
-        Title="ShellView" Height="600" Width="1000">
+        WindowStartupLocation="CenterScreen"
+        Title="ShellView" Height="600" Width="1300"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}">
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -23,7 +32,7 @@
 
         <!--Select Pages-->
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0 0 20 0">
-            
+
             <ListBox x:Name="Pages"/>
         </StackPanel>
 

@@ -14,8 +14,15 @@
                 <DataGridTextColumn Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
                 <DataGridTextColumn Width="auto" Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
                 <DataGridTextColumn Width="auto" Header="Compulsory" Binding="{Binding Path=Compulsory}"></DataGridTextColumn>
-                <DataGridTextColumn Width="auto" Header="Prerequisite Course" Binding="{Binding Path=PreRequisite}"></DataGridTextColumn>
                 <DataGridTextColumn Width="auto" Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+
+                <DataGridTemplateColumn Header="Completed" Width="auto" >
+                    <DataGridTemplateColumn.CellTemplate >
+                        <DataTemplate>
+                            <CheckBox x:Name="CheckBoxCompleted"  VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

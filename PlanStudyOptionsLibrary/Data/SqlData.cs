@@ -18,7 +18,8 @@ namespace PlanStudyOptionsLibrary.Data
 
         public List<CourseModel> GetAllCourses()
         {
-            return _db.LoadData<CourseModel, dynamic>("select * from dbo.Courses",
+            return _db.LoadData<CourseModel, dynamic>("select * from dbo.Courses " +
+                                                      "order by Year, Semester",
                                                  new { },
                                                  connectionStringName,
                                                  false);

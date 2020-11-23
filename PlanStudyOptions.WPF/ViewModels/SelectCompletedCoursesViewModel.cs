@@ -19,8 +19,8 @@ namespace PlanStudyOptions.WPF.ViewModels
             _sqlData = sqlData;
 
             AllCourses = new BindableCollection<CourseModel>(_sqlData.GetAllCourses());
-        }
 
+        }
 
 
     }
