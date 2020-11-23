@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PlanStudyOptionsLibrary.Data
 {
-    public class SqlData
+    public class SqlData : ISqlData
     {
         private readonly ISqlDataAccess _db;
         private const string connectionStringName = "SqlDb";
@@ -19,7 +19,7 @@ namespace PlanStudyOptionsLibrary.Data
         public List<CourseModel> GetAllCourses()
         {
             return _db.LoadData<CourseModel, dynamic>("select * from dbo.Courses",
-                                                 new {  },
+                                                 new { },
                                                  connectionStringName,
                                                  false);
         }

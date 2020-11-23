@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro;
 using PlanStudyOptions.WPF.ViewModels;
+using PlanStudyOptionsLibrary.Data;
+using PlanStudyOptionsLibrary.Databases;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +26,11 @@ namespace PlanStudyOptions.WPF
             _container
                 .Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>();
+
+            _container
+                .PerRequest<ISqlData, SqlData>();
+            _container
+                .PerRequest<ISqlDataAccess, SqlDataAccess>();
 
             GetType().Assembly.GetTypes()
                 .Where(type => type.IsClass)

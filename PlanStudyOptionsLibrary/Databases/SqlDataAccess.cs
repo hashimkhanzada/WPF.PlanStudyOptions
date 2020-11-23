@@ -11,19 +11,14 @@ namespace PlanStudyOptionsLibrary.Databases
 {
     public class SqlDataAccess : ISqlDataAccess
     {
-        private readonly IConfiguration _config;
 
-        public SqlDataAccess(IConfiguration config)
-        {
-            _config = config;
-        }
 
         public List<T> LoadData<T, U>(string sqlStatement,
                                       U parameters,
                                       string connectionStringName,
                                       bool isStoredProcedure = false)
         {
-            string connectionString = _config.GetConnectionString(connectionStringName);
+            string connectionString = Helper.CnnVal(connectionStringName);
             CommandType commandType = CommandType.Text;
 
             if (isStoredProcedure == true)
@@ -43,7 +38,7 @@ namespace PlanStudyOptionsLibrary.Databases
                                 string connectionStringName,
                                 bool isStoredProcedure = false)
         {
-            string connectionString = _config.GetConnectionString(connectionStringName);
+            string connectionString = Helper.CnnVal(connectionStringName);
             CommandType commandType = CommandType.Text;
 
             if (isStoredProcedure == true)

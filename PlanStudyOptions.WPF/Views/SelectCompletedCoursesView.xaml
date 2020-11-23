@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="PlanStudyOptions.WPF.Views.SelectCompletedCoursesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses" SelectionMode="Single" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="auto" Header="Course Code" Binding="{Binding Path=CourseId}"></DataGridTextColumn>
+                <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
+                <DataGridTextColumn Width="auto" Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridTextColumn Width="auto" Header="Compulsory" Binding="{Binding Path=Compulsory}"></DataGridTextColumn>
+                <DataGridTextColumn Width="auto" Header="Prerequisite Course" Binding="{Binding Path=PreRequisite}"></DataGridTextColumn>
+                <DataGridTextColumn Width="auto" Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>
