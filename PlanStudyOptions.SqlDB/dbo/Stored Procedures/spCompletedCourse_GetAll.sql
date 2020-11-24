@@ -6,8 +6,9 @@ AS
 begin
 	set nocount on;
 
-	Select [StudentId], [CourseId]
+	Select [CompletedCourses].[StudentId], [CompletedCourses].[CourseId], [Courses].[Name]
 	FROM CompletedCourses
+	INNER JOIN Courses ON CompletedCourses.CourseId = Courses.CourseId 
 	WHERE StudentId = @StudentId
 
 end

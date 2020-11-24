@@ -1,0 +1,73 @@
+﻿<UserControl x:Class="PlanStudyOptions.WPF.Views.SelectFutureCoursesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        
+
+
+        <!-- Courses to complete major -->
+        <!-- Year 1 -->
+        <DataGrid Grid.Column="0" Grid.Row="0" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=YearOneCourses}" 
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False"
+                  Margin="0 0 20 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Width="auto" Header="Add" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Year 2 -->
+        <DataGrid Grid.Column="1" Grid.Row="0" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=YearTwoCourses}" 
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Width="auto" Header="Add" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Year 3 -->
+        <DataGrid Grid.Column="2" Grid.Row="0" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=YearThreeCourses}" 
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False"
+                  Margin="20 0 0 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn Width="auto" Header="Add" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+
+        <!-- Completed Courses -->
+        <!--<DataGrid Grid.Column="1" Grid.Row="0" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses"
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False" Margin="20 0 0 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Course Code" Binding="{Binding Path=CourseId}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>-->
+
+        <Button Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="AddCourses">Submit</Button>
+    </Grid>
+</UserControl>

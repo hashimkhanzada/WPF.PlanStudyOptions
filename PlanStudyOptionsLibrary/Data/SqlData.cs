@@ -27,10 +27,42 @@ namespace PlanStudyOptionsLibrary.Data
                                                  false);
         }
 
+        public List<CourseModel> GetCoursesByYear(int Year)
+        {
+            return _db.LoadData<CourseModel, dynamic>("dbo.spGetCoursesByYear",
+                                                 new {
+                                                     Year
+                                                 },
+                                                 connectionStringName,
+                                                 true);
+        }
+
         public List<CompletedCourseModel> GetAllCompletedCourses(string StudentId)
         {
             return _db.LoadData<CompletedCourseModel, dynamic>("dbo.spCompletedCourse_GetAll",
                                                  new {
+                                                     StudentId
+                                                 },
+                                                 connectionStringName,
+                                                 true);
+        }
+
+        public List<MajorModel> GetAllMajors()
+        {
+            return _db.LoadData<MajorModel, dynamic>("select * from dbo.Majors ",
+                                                 new { },
+                                                 connectionStringName,
+                                                 false);
+        }
+
+        //TODO
+        public List<CompletedCourseModel> GetAllCourseOptions(string StudentId)
+        {
+            return _db.LoadData<CompletedCourseModel, dynamic>("select completed_courses.course_code, Courses.Name " +
+            "from completed_courses " +
+            "INNER JOIN Courses ON completed_courses.course_code = Courses.course_code",
+                                                 new
+                                                 {
                                                      StudentId
                                                  },
                                                  connectionStringName,

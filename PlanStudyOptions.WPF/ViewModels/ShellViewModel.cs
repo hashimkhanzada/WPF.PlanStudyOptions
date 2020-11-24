@@ -14,6 +14,7 @@ namespace PlanStudyOptions.WPF.ViewModels
         private readonly ISqlData _sqlData;
 
         public BindableCollection<string> Pages { get; set; }
+        public BindableCollection<MajorModel> Majors { get; set; }
         public ShellViewModel(ISqlData sqlData)
         {
             Pages = new BindableCollection<string>
@@ -25,8 +26,10 @@ namespace PlanStudyOptions.WPF.ViewModels
             };
 
             _sqlData = sqlData;
+            Majors = new BindableCollection<MajorModel>(_sqlData.GetAllMajors());
 
-            ActivateItem(new SelectCompletedCoursesViewModel(sqlData));
+
+            ActivateItem(new SelectFutureCoursesViewModel(sqlData));
             
         }
 
