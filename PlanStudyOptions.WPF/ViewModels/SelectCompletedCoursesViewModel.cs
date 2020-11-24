@@ -6,20 +6,75 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PlanStudyOptions.WPF.ViewModels
 {
     public class SelectCompletedCoursesViewModel : Screen
     {
         private readonly ISqlData _sqlData;
-        public BindableCollection<CourseModel> AllCourses { get; set; }
+        private BindableCollection<CourseModel> _allCourses;
+        private List<CompletedCourseModel> _completedCourses;
+
+        public BindableCollection<CompletedCourseModel> CompletedCourseModels { get; set; }
+
 
         public SelectCompletedCoursesViewModel(ISqlData sqlData)
         {
             _sqlData = sqlData;
 
-            AllCourses = new BindableCollection<CourseModel>(_sqlData.GetAllCourses());
+            _allCourses = new BindableCollection<CourseModel>(_sqlData.GetAllCourses());
+            _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses("1"));
+            CompletedCourseModel completedCourseModel = new CompletedCourseModel();
 
+
+        }
+
+        public BindableCollection<CourseModel> AllCourses
+        {
+            get 
+            {
+                foreach (var ac in _allCourses)
+                {
+                    foreach (var cc in _completedCourses)
+                    {
+                        if (ac.CourseId.Contains(cc.CourseId) == true)
+                        {
+                            ac.IsSelected = true;
+                        }
+                    }
+                }
+                return _allCourses;
+            }
+            set { _allCourses = value; }
+        }
+
+
+        public void AddCourses()
+        {
+            foreach (var item in _allCourses)
+            {
+                if (item.IsSelected == true)
+                {
+                    CompletedCourseModel CompletedCourse = new CompletedCourseModel
+                    {
+                        StudentId = "1",
+                        CourseId = item.CourseId
+                    };
+
+                    _sqlData.InsertCompletedCourse(CompletedCourse.StudentId, CompletedCourse.CourseId);
+                }
+                else if(item.IsSelected == false)
+                {
+                    CompletedCourseModel CompletedCourse = new CompletedCourseModel
+                    {
+                        StudentId = "1",
+                        CourseId = item.CourseId
+                    };
+
+                    _sqlData.RemoveCompletedCourse(CompletedCourse.StudentId, CompletedCourse.CourseId);
+                }
+            }
         }
 
 

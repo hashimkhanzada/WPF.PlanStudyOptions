@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PlanStudyOptionsLibrary.Models
 {
-    public class MajorClass
+    public class MajorModel
     {
         public string MajorId { get; set; }
         public string Name { get; set; }

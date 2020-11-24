@@ -4,26 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d" Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <DataGrid HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses" SelectionMode="Single" CanUserAddRows="False" IsReadOnly="True" AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Width="auto" Header="Course Code" Binding="{Binding Path=CourseId}"></DataGridTextColumn>
-                <DataGridTextColumn Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
-                <DataGridTextColumn Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
-                <DataGridTextColumn Width="auto" Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
-                <DataGridTextColumn Width="auto" Header="Compulsory" Binding="{Binding Path=Compulsory}"></DataGridTextColumn>
-                <DataGridTextColumn Width="auto" Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
-                <DataGridTemplateColumn Header="Completed" Width="auto" >
-                    <DataGridTemplateColumn.CellTemplate >
-                        <DataTemplate>
-                            <CheckBox x:Name="CheckBoxCompleted"  VerticalAlignment="Center" HorizontalAlignment="Center"></CheckBox>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
+
+        <DataGrid Grid.Row="1"  SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Course Code" Binding="{Binding Path=CourseId}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn IsReadOnly="True" Width="auto" Header="Compulsory" ElementStyle="{StaticResource MaterialDesignDataGridCheckBoxColumnStyle}" Binding="{Binding Path=Compulsory}"></DataGridCheckBoxColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn  Width="auto" Header="Completed" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
+        
+        <Button Grid.Row="2" x:Name="AddCourses">Submit</Button>
+
     </Grid>
 </UserControl>

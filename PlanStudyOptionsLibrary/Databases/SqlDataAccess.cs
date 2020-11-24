@@ -16,7 +16,7 @@ namespace PlanStudyOptionsLibrary.Databases
         public List<T> LoadData<T, U>(string sqlStatement,
                                       U parameters,
                                       string connectionStringName,
-                                      bool isStoredProcedure = false)
+                                      bool isStoredProcedure)
         {
             string connectionString = Helper.CnnVal(connectionStringName);
             CommandType commandType = CommandType.Text;
@@ -36,7 +36,7 @@ namespace PlanStudyOptionsLibrary.Databases
         public void SaveData<T>(string sqlStatement,
                                 T parameters,
                                 string connectionStringName,
-                                bool isStoredProcedure = false)
+                                bool isStoredProcedure)
         {
             string connectionString = Helper.CnnVal(connectionStringName);
             CommandType commandType = CommandType.Text;

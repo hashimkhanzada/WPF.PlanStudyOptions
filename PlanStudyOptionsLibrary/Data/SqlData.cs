@@ -1,8 +1,10 @@
-﻿using PlanStudyOptionsLibrary.Databases;
+﻿using Dapper;
+using PlanStudyOptionsLibrary.Databases;
 using PlanStudyOptionsLibrary.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PlanStudyOptionsLibrary.Data
 {
@@ -24,5 +26,48 @@ namespace PlanStudyOptionsLibrary.Data
                                                  connectionStringName,
                                                  false);
         }
+
+        public List<CompletedCourseModel> GetAllCompletedCourses(string StudentId)
+        {
+            return _db.LoadData<CompletedCourseModel, dynamic>("dbo.spCompletedCourse_GetAll",
+                                                 new {
+                                                     StudentId
+                                                 },
+                                                 connectionStringName,
+                                                 true);
+        }
+
+
+
+        public void InsertCompletedCourse(string StudentId, string CourseId)
+        {
+            _db.SaveData("dbo.spCompletedCourse_Insert",
+                                       new
+                                       {
+                                           StudentId,
+                                           CourseId
+                                       },
+                                       connectionStringName,
+                                                 true);
+
+
+
+        }
+
+        public void RemoveCompletedCourse(string StudentId, string CourseId)
+        {
+            _db.SaveData("dbo.spCompletedCourse_Delete",
+                                       new
+                                       {
+                                           StudentId,
+                                           CourseId
+                                       },
+                                       connectionStringName,
+                                                 true);
+
+
+
+        }
+
     }
 }
