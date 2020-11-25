@@ -34,34 +34,34 @@
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0 0 70 0">
 
             <!--Select Pages-->
-            <ListBox x:Name="Pages" Margin="0 0 0 50"/>
+            <ListBox x:Name="Pages" Margin="0 0 0 50" FontSize="15" />
 
             <!-- Select Major | Combo Box -->
-            <ComboBox Width="auto" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Majors}" Margin="0 0 70 30">
+            <!--<ComboBox Width="auto" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Majors}" Margin="0 0 70 30">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-            </ComboBox>
+            </ComboBox>-->
 
             <!-- Select Major | Combo Box -->
-            <ComboBox Width="auto" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Majors}" Margin="0 0 70 30">
+            <!--<ComboBox Width="auto" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Majors}" Margin="0 0 70 30">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-            </ComboBox>
+            </ComboBox>-->
 
             <!-- Select Major | Combo Box -->
-            <ComboBox Width="auto" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Majors}" Margin="0 0 70 30">
+            <!--<ComboBox Width="auto" Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Majors}" Margin="0 0 70 30">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
                     </DataTemplate>
                 </ComboBox.ItemTemplate>
-            </ComboBox>
+            </ComboBox>-->
         </StackPanel>
 
         

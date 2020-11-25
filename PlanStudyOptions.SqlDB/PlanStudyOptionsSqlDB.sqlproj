@@ -74,6 +74,9 @@
     <Build Include="dbo\Stored Procedures\spCompletedCourse_Delete.sql" />
     <Build Include="dbo\Stored Procedures\spCompletedCourse_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spGetCoursesByYear.sql" />
+    <Build Include="dbo\Stored Procedures\spGetAllCourseOptionsByMajor.sql" />
+    <Build Include="dbo\Stored Procedures\spFutureCourse_Insert.sql" />
+    <Build Include="dbo\Stored Procedures\spFutureCourse_Delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="PlanStudyOptions.SqlDB.refactorlog" />

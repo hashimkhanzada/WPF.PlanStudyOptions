@@ -55,18 +55,19 @@ namespace PlanStudyOptionsLibrary.Data
                                                  false);
         }
 
-        //TODO
-        public List<CompletedCourseModel> GetAllCourseOptions(string StudentId)
+
+
+        
+        public List<CourseModel> GetAllCourseOptionsByMajor(string MajorId, int Year)
         {
-            return _db.LoadData<CompletedCourseModel, dynamic>("select completed_courses.course_code, Courses.Name " +
-            "from completed_courses " +
-            "INNER JOIN Courses ON completed_courses.course_code = Courses.course_code",
+            return _db.LoadData<CourseModel, dynamic>("dbo.spGetAllCourseOptionsByMajor",
                                                  new
                                                  {
-                                                     StudentId
+                                                     MajorId,
+                                                     Year
                                                  },
                                                  connectionStringName,
-                                                 true);
+                                                 true); ;
         }
 
 
@@ -93,6 +94,38 @@ namespace PlanStudyOptionsLibrary.Data
                                        {
                                            StudentId,
                                            CourseId
+                                       },
+                                       connectionStringName,
+                                                 true);
+
+
+
+        }
+
+        public void InsertFutureCourse(string StudentId, string CourseId, string MajorId)
+        {
+            _db.SaveData("dbo.spFutureCourse_Insert",
+                                       new
+                                       {
+                                           StudentId,
+                                           CourseId,
+                                           MajorId
+                                       },
+                                       connectionStringName,
+                                                 true);
+
+
+
+        }
+
+        public void RemoveFutureCourse(string StudentId, string CourseId, string MajorId)
+        {
+            _db.SaveData("dbo.spFutureCourse_Delete",
+                                       new
+                                       {
+                                           StudentId,
+                                           CourseId,
+                                           MajorId
                                        },
                                        connectionStringName,
                                                  true);
