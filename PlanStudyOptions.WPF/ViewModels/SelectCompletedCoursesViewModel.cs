@@ -23,10 +23,14 @@ namespace PlanStudyOptions.WPF.ViewModels
             _sqlData = sqlData;
 
             _allCourses = new BindableCollection<CourseModel>(_sqlData.GetAllCourses());
-            _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses("1"));
+            _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses(UserName));
 
 
         }
+
+        public string UserName { get {
+                return Environment.UserName;
+            } }
 
         public BindableCollection<CourseModel> AllCourses
         {
@@ -55,7 +59,7 @@ namespace PlanStudyOptions.WPF.ViewModels
                 {
                     CompletedCourseModel CompletedCourse = new CompletedCourseModel
                     {
-                        StudentId = "1",
+                        StudentId = UserName,
                         CourseId = item.CourseId
                     };
 
@@ -65,7 +69,7 @@ namespace PlanStudyOptions.WPF.ViewModels
                 {
                     CompletedCourseModel CompletedCourse = new CompletedCourseModel
                     {
-                        StudentId = "1",
+                        StudentId = UserName,
                         CourseId = item.CourseId
                     };
 

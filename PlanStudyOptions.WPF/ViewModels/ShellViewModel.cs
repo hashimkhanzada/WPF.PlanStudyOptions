@@ -14,23 +14,51 @@ namespace PlanStudyOptions.WPF.ViewModels
         private readonly ISqlData _sqlData;
 
         public BindableCollection<string> Pages { get; set; }
-        //public BindableCollection<MajorModel> Majors { get; set; }
+        private string _selectedPage;
+
         public ShellViewModel(ISqlData sqlData)
         {
             Pages = new BindableCollection<string>
             {
                 "Completed Courses",
-                "Course Options",
-                "*******",
+                "Majors",
+                "Electives",
                 "Print"
             };
 
             _sqlData = sqlData;
-            //Majors = new BindableCollection<MajorModel>(_sqlData.GetAllMajors());
 
+        }
 
-            ActivateItem(new SelectFutureCoursesViewModel(sqlData));
-            
+        public void LoadPage() 
+        {
+            if (SelectedPage != null && !string.IsNullOrWhiteSpace(SelectedPage))
+            {
+                switch(SelectedPage)
+                {
+                    case "Completed Courses":
+                        ActivateItem(new SelectCompletedCoursesViewModel(_sqlData));
+                        break;
+                    case "Majors":
+                        ActivateItem(new SelectFutureCoursesViewModel(_sqlData));
+                        break;
+                    case "Electives":
+                        ActivateItem(new SelectElectivesViewModel(_sqlData));
+                        break;
+                        //TODO - add print
+                }
+            }
+        }
+
+        public string SelectedPage
+        {
+            get { return _selectedPage; }
+            set 
+            {
+                _selectedPage = value;
+                NotifyOfPropertyChange(() => SelectedPage);
+                LoadPage();
+            }
         }
 
 

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 using System.Windows;
 
 namespace PlanStudyOptions.WPF.ViewModels
@@ -20,19 +21,25 @@ namespace PlanStudyOptions.WPF.ViewModels
         private MajorModel _selectedMajor;
 
         public BindableCollection<MajorModel> Majors { get; set; }
-
+        
         public SelectFutureCoursesViewModel(ISqlData sqlData)
         {
             _sqlData = sqlData;
+
+            
 
             _yearOneCourses = new BindableCollection<CourseModel>(_sqlData.GetCoursesByYear(1));
             _yearTwoCourses = new BindableCollection<CourseModel>(_sqlData.GetCoursesByYear(2));
             _yearThreeCourses = new BindableCollection<CourseModel>(_sqlData.GetCoursesByYear(3));
 
-            _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses("1"));
+            _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses(UserName));
 
             Majors = new BindableCollection<MajorModel>(_sqlData.GetAllMajors());
         }
+
+        public string UserName { get {
+                return Environment.UserName;
+            } }
 
         public MajorModel SelectedMajor
         {
@@ -120,11 +127,11 @@ namespace PlanStudyOptions.WPF.ViewModels
             {
                 if (item.IsSelected == true)
                 {
-                    _sqlData.InsertFutureCourse("1", item.CourseId, SelectedMajor.MajorId);
+                    _sqlData.InsertFutureCourse(UserName, item.CourseId, SelectedMajor.MajorId);
                 }
                 else if (item.IsSelected == false)
                 {
-                    _sqlData.RemoveFutureCourse("1", item.CourseId, SelectedMajor.MajorId);
+                    _sqlData.RemoveFutureCourse(UserName, item.CourseId, SelectedMajor.MajorId);
                 }
             }
         }
