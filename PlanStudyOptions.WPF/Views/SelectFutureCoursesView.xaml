@@ -24,7 +24,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
             <TextBlock Margin="0 2 30 0" FontSize="20">Select Major:</TextBlock>
             
-            <ComboBox Width="auto" MinWidth="250" ItemsSource="{Binding Majors}" SelectedItem="{Binding SelectedMajor}" Margin="0 0 70 30" FontSize="15">
+            <ComboBox Width="auto" MinWidth="250" SelectedValuePath="Content" ItemsSource="{Binding Majors}"  SelectedItem="{Binding SelectedMajor}" Margin="0 0 70 30" FontSize="15">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>

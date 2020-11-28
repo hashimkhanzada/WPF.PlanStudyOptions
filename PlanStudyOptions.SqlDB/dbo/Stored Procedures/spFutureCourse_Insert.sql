@@ -4,7 +4,7 @@
 	@MajorId nvarchar(50)
 
 AS
-if not exists (select 1 from dbo.FutureCourses Where StudentId = @StudentId AND CourseId = @CourseId)
+if not exists (select 1 from dbo.FutureCourses Where StudentId = @StudentId AND CourseId = @CourseId AND MajorId = @MajorId)
 begin
 	set nocount on;
 

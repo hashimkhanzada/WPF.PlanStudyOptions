@@ -20,5 +20,13 @@ namespace PlanStudyOptionsLibrary.Data
         List<CourseModel> GetAllCourseOptionsByMajor(string MajorId, int Year);
         void InsertFutureCourse(string StudentId, string CourseId, string MajorId);
         void RemoveFutureCourse(string StudentId, string CourseId, string MajorId);
+        /// <summary>
+        /// Gets all the subjects the student can choose as electives
+        /// </summary>
+        /// <param name="StudentId"></param>
+        /// <returns></returns>
+        List<CourseModel> GetAllElectiveCourses(string StudentId);
+        List<int> GetCreditsCompleted(string StudentId, string MajorId);
+        List<int> GetCreditsDue(string StudentId, string MajorId);
     }
 }

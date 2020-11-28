@@ -70,7 +70,44 @@ namespace PlanStudyOptionsLibrary.Data
                                                  true); ;
         }
 
+        public List<CourseModel> GetAllElectiveCourses(string StudentId)
+        {
+            return _db.LoadData<CourseModel, dynamic>("dbo.spGetAllElectiveCourses",
+                                                 new
+                                                 {
+                                                     StudentId
+                                                 },
+                                                 connectionStringName,
+                                                 true); ;
+        }
 
+        public List<int> GetCreditsCompleted(string StudentId, string MajorId)
+        {
+            return _db.LoadData<int, dynamic>("SELECT SUM(Credits) FROM FutureCourses " +
+                                              "INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId WHERE StudentId = @StudentId AND MajorId = @MajorId",
+                                                 new
+                                                 {
+                                                     StudentId,
+                                                     MajorId
+                                                 },
+                                                 connectionStringName,
+                                                 false); ;
+        }
+
+        public List<int> GetCreditsDue(string StudentId, string MajorId)
+        {
+            return _db.LoadData<int, dynamic>("SELECT SUM(Credits) FROM Courses "
+                                              + "WHERE CourseId Not in ( "
+                                              + "SELECT FutureCourses.CourseId FROM FutureCourses INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId WHERE StudentId = @StudentId AND MajorId = @MajorId"
+                                              + " )",
+                                                 new
+                                                 {
+                                                     StudentId,
+                                                     MajorId
+                                                 },
+                                                 connectionStringName,
+                                                 false); ;
+        }
 
         public void InsertCompletedCourse(string StudentId, string CourseId)
         {

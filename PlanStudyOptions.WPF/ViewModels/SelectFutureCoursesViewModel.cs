@@ -14,6 +14,7 @@ namespace PlanStudyOptions.WPF.ViewModels
     public class SelectFutureCoursesViewModel : Screen
     {
         private readonly ISqlData _sqlData;
+        private readonly IEventAggregator _eventAggregator;
         private List<CompletedCourseModel> _completedCourses;
         private BindableCollection<CourseModel> _yearOneCourses;
         private BindableCollection<CourseModel> _yearTwoCourses;
@@ -22,12 +23,10 @@ namespace PlanStudyOptions.WPF.ViewModels
 
         public BindableCollection<MajorModel> Majors { get; set; }
         
-        public SelectFutureCoursesViewModel(ISqlData sqlData)
+        public SelectFutureCoursesViewModel(ISqlData sqlData, IEventAggregator eventAggregator)
         {
             _sqlData = sqlData;
-
-            
-
+            _eventAggregator = eventAggregator;
             _yearOneCourses = new BindableCollection<CourseModel>(_sqlData.GetCoursesByYear(1));
             _yearTwoCourses = new BindableCollection<CourseModel>(_sqlData.GetCoursesByYear(2));
             _yearThreeCourses = new BindableCollection<CourseModel>(_sqlData.GetCoursesByYear(3));
@@ -103,6 +102,8 @@ namespace PlanStudyOptions.WPF.ViewModels
             AddOrDelete(_yearTwoCourses);
 
             AddOrDelete(_yearThreeCourses);
+
+            _eventAggregator.PublishOnUIThread(SelectedMajor);
         }
 
         public BindableCollection<CourseModel> checkIfCourseCompleted(BindableCollection<CourseModel> courses)
@@ -123,6 +124,7 @@ namespace PlanStudyOptions.WPF.ViewModels
 
         public void AddOrDelete(BindableCollection<CourseModel> courses)
         {
+            //TODO - add validation
             foreach (var item in courses)
             {
                 if (item.IsSelected == true)

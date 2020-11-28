@@ -7,6 +7,32 @@
              mc:Ignorable="d"  Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock x:Name="ret"></TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <TextBlock>Credits Completed: </TextBlock>
+            <TextBlock Margin="0 0 20 0" x:Name="CreditsCompleted"></TextBlock>
+            <TextBlock>Credits Needed: </TextBlock>
+            <TextBlock Margin="0 0 20 0" x:Name="CreditsDue"></TextBlock>
+            <TextBlock>Chosen Major: </TextBlock>
+            <TextBlock Text="{Binding Path=MajorName}"></TextBlock>
+        </StackPanel>
+        
+        <DataGrid Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ElectiveCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+                <DataGridCheckBoxColumn  Width="auto" Header="Completed" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="2" x:Name="AddCourses">Submit</Button>
     </Grid>
 </UserControl>

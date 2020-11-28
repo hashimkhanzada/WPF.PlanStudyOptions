@@ -6,17 +6,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace PlanStudyOptions.WPF.ViewModels
 {
     public class ShellViewModel : Conductor<object>
     {
         private readonly ISqlData _sqlData;
+        private readonly IEventAggregator _eventAggregator;
 
         public BindableCollection<string> Pages { get; set; }
         private string _selectedPage;
 
-        public ShellViewModel(ISqlData sqlData)
+        public ShellViewModel(ISqlData sqlData, IEventAggregator eventAggregator)
         {
             Pages = new BindableCollection<string>
             {
@@ -27,7 +29,7 @@ namespace PlanStudyOptions.WPF.ViewModels
             };
 
             _sqlData = sqlData;
-
+            _eventAggregator = eventAggregator;
         }
 
         public void LoadPage() 
@@ -40,10 +42,10 @@ namespace PlanStudyOptions.WPF.ViewModels
                         ActivateItem(new SelectCompletedCoursesViewModel(_sqlData));
                         break;
                     case "Majors":
-                        ActivateItem(new SelectFutureCoursesViewModel(_sqlData));
+                        ActivateItem(new SelectFutureCoursesViewModel(_sqlData, _eventAggregator));
                         break;
                     case "Electives":
-                        ActivateItem(new SelectElectivesViewModel(_sqlData));
+                        ActivateItem(new SelectElectivesViewModel(_sqlData, _eventAggregator));
                         break;
                         //TODO - add print
                 }
