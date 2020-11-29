@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
+             xmlns:cal="http://www.caliburnproject.org"
              mc:Ignorable="d"  Background="White"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -14,12 +15,12 @@
         </Grid.RowDefinitions>
 
 
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <TextBlock>Credits Completed: </TextBlock>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0">
+            <TextBlock Margin="0 0 5 0">Credits Completed: </TextBlock>
             <TextBlock Margin="0 0 20 0" x:Name="CreditsCompleted"></TextBlock>
-            <TextBlock>Credits Needed: </TextBlock>
+            <TextBlock Margin="0 0 5 0">Minimum Credits Needed: </TextBlock>
             <TextBlock Margin="0 0 20 0" x:Name="CreditsDue"></TextBlock>
-            <TextBlock>Chosen Major: </TextBlock>
+            <TextBlock Margin="0 0 5 0">Chosen Major: </TextBlock>
             <TextBlock Text="{Binding Path=MajorName}"></TextBlock>
         </StackPanel>
         

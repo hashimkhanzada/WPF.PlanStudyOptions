@@ -10,13 +10,14 @@ using System.Windows;
 
 namespace PlanStudyOptions.WPF.ViewModels
 {
-    public class ShellViewModel : Conductor<object>
+    public class ShellViewModel : Conductor<object>, IHandle<MajorModel>
     {
         private readonly ISqlData _sqlData;
         private readonly IEventAggregator _eventAggregator;
 
         public BindableCollection<string> Pages { get; set; }
         private string _selectedPage;
+        private MajorModel _chosenMajor;
 
         public ShellViewModel(ISqlData sqlData, IEventAggregator eventAggregator)
         {
@@ -30,6 +31,8 @@ namespace PlanStudyOptions.WPF.ViewModels
 
             _sqlData = sqlData;
             _eventAggregator = eventAggregator;
+
+            _eventAggregator.Subscribe(this);
         }
 
         public void LoadPage() 
@@ -45,12 +48,30 @@ namespace PlanStudyOptions.WPF.ViewModels
                         ActivateItem(new SelectFutureCoursesViewModel(_sqlData, _eventAggregator));
                         break;
                     case "Electives":
-                        ActivateItem(new SelectElectivesViewModel(_sqlData, _eventAggregator));
+                        ActivateItem(new SelectElectivesViewModel(_sqlData, ChosenMajor));
                         break;
-                        //TODO - add print
+                    case "Print":
+                        ActivateItem(new PrintPlanViewModel(_sqlData, ChosenMajor));
+                        break;
                 }
             }
         }
+
+        public void Handle(MajorModel message)
+        {
+            ChosenMajor = message;
+        }
+
+        public MajorModel ChosenMajor
+        {
+            get { return _chosenMajor; }
+            set 
+            { 
+                _chosenMajor = value;
+                NotifyOfPropertyChange(() => ChosenMajor);
+            }
+        }
+
 
         public string SelectedPage
         {

@@ -106,10 +106,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ViewModels\PrintPlanViewModel.cs" />
     <Compile Include="ViewModels\SelectCompletedCoursesViewModel.cs" />
     <Compile Include="ViewModels\SelectElectivesViewModel.cs" />
     <Compile Include="ViewModels\SelectFutureCoursesViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\PrintPlanView.xaml.cs">
+      <DependentUpon>PrintPlanView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectCompletedCoursesView.xaml.cs">
       <DependentUpon>SelectCompletedCoursesView.xaml</DependentUpon>
     </Compile>
@@ -152,6 +156,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\PrintPlanView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SelectCompletedCoursesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
