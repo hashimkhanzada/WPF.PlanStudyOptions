@@ -104,6 +104,7 @@ namespace PlanStudyOptions.WPF.ViewModels
             AddOrDelete(_yearThreeCourses);
 
             _eventAggregator.PublishOnUIThread(SelectedMajor);
+
         }
 
         public BindableCollection<CourseModel> checkIfCourseCompleted(BindableCollection<CourseModel> courses)
@@ -135,6 +136,7 @@ namespace PlanStudyOptions.WPF.ViewModels
                 {
                     _sqlData.RemoveFutureCourse(UserName, item.CourseId, SelectedMajor.MajorId);
                 }
+
             }
         }
 

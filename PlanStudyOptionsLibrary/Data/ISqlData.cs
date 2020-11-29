@@ -28,5 +28,13 @@ namespace PlanStudyOptionsLibrary.Data
         List<CourseModel> GetAllElectiveCourses(string StudentId);
         List<int> GetCreditsCompleted(string StudentId, string MajorId);
         List<int> GetCreditsDue(string StudentId, string MajorId);
+        /// <summary>
+        /// Gets subjects the student has to complete in the future
+        /// </summary>
+        /// <param name="StudentId"></param>
+        /// <param name="MajorId"></param>
+        /// <returns></returns>
+        List<CourseModel> GetSelectedFutureCourses(string StudentId, string MajorId);
+        List<CourseModel> GetPrintCourses(string StudentId, string MajorId, int Year);
     }
 }

@@ -94,6 +94,35 @@ namespace PlanStudyOptionsLibrary.Data
                                                  false); ;
         }
 
+        //
+        public List<CourseModel> GetSelectedFutureCourses(string StudentId, string MajorId)
+        {
+            return _db.LoadData<CourseModel, dynamic>("SELECT * FROM FutureCourses"
+                                                      + " INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId WHERE StudentId = @StudentId AND MajorId = @MajorId",
+                                                 new
+                                                 {
+                                                     StudentId,
+                                                     MajorId
+                                                 },
+                                                 connectionStringName,
+                                                 false); ;
+        }
+
+        public List<CourseModel> GetPrintCourses(string StudentId, string MajorId, int Year)
+        {
+            return _db.LoadData<CourseModel, dynamic>("SELECT * FROM FutureCourses"
+                                                      + " INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId " +
+                                                      "WHERE StudentId = @StudentId AND MajorId = @MajorId AND Year = @Year",
+                                                 new
+                                                 {
+                                                     StudentId,
+                                                     MajorId,
+                                                     Year
+                                                 },
+                                                 connectionStringName,
+                                                 false); ;
+        }
+
         public List<int> GetCreditsDue(string StudentId, string MajorId)
         {
             return _db.LoadData<int, dynamic>("SELECT SUM(Credits) FROM Courses "

@@ -15,6 +15,14 @@ namespace PlanStudyOptions.WPF.ViewModels
         private readonly ISqlData _sqlData;
         private readonly IEventAggregator _eventAggregator;
 
+        public string UserName
+        {
+            get
+            {
+                return Environment.UserName;
+            }
+        }
+
         public BindableCollection<string> Pages { get; set; }
         private string _selectedPage;
         private MajorModel _chosenMajor;
@@ -31,7 +39,7 @@ namespace PlanStudyOptions.WPF.ViewModels
 
             _sqlData = sqlData;
             _eventAggregator = eventAggregator;
-
+            
             _eventAggregator.Subscribe(this);
         }
 
@@ -71,7 +79,6 @@ namespace PlanStudyOptions.WPF.ViewModels
                 NotifyOfPropertyChange(() => ChosenMajor);
             }
         }
-
 
         public string SelectedPage
         {

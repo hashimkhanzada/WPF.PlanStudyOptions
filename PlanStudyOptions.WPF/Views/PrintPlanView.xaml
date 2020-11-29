@@ -4,9 +4,58 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" FontWeight="Bold" >Year 1</TextBlock>
+        <DataGrid Grid.Column="0" Grid.Row="2"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=PrintYearOne}" 
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False"
+                  Margin="0 0 20 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Year 2 -->
+        <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontWeight="Bold" >Year 2</TextBlock>
+        <DataGrid Grid.Column="1" Grid.Row="2"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=PrintYearTwo}" 
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Year 3 -->
+        <TextBlock Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" FontWeight="Bold">Year 3</TextBlock>
+        <DataGrid Grid.Column="2" Grid.Row="2"
+                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=PrintYearThree}" 
+                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False"
+                  Margin="20 0 0 0">
+            <DataGrid.Columns>
+                <DataGridTextColumn IsReadOnly="True" Width="*"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
+                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>            
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PrintPage">Save</Button>
     </Grid>
 </UserControl>

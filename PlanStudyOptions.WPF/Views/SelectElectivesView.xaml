@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
              xmlns:cal="http://www.caliburnproject.org"
-             mc:Ignorable="d"  Background="White"
+             mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.RowDefinitions>
@@ -13,8 +13,7 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
-
-
+        
         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0">
             <TextBlock Margin="0 0 5 0">Credits Completed: </TextBlock>
             <TextBlock Margin="0 0 20 0" x:Name="CreditsCompleted"></TextBlock>
@@ -23,7 +22,7 @@
             <TextBlock Margin="0 0 5 0">Chosen Major: </TextBlock>
             <TextBlock Text="{Binding Path=MajorName}"></TextBlock>
         </StackPanel>
-        
+
         <DataGrid Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ElectiveCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
@@ -33,7 +32,7 @@
                 <DataGridCheckBoxColumn  Width="auto" Header="Completed" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
-
+        
         <Button Grid.Row="2" x:Name="AddCourses">Submit</Button>
     </Grid>
 </UserControl>
