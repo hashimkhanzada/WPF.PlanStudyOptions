@@ -15,28 +15,53 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid>
+    <Grid Background="LightGray">
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" />
             <RowDefinition Height="auto" />
             <RowDefinition Height="*" />
-            <RowDefinition Height="20" />
         </Grid.RowDefinitions>
 
 
-        <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0 0 70 0">
+        <StackPanel Background="#FF222222" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
             <!--Select Pages-->
-            <ListBox x:Name="Pages" SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" FontSize="15" />
+            <!--<ListBox Foreground="LightGray" Width="250px" x:Name="Pages" SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" FontSize="15"
+                     />-->
+            <ListView SelectedIndex="{Binding Path=SelectedPage, Mode=OneWayToSource}" Margin="0 50" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18">
+                <ListViewItem Height="60" x:Name="CompletedCourses"  >
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="TickBoxMultipleOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Completed Courses" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="Majors" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="GraduationCapOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Majors" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="Electives" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="FormatListBulleted" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Electives" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+                <ListViewItem x:Name="Print" Height="60">
+                    <StackPanel Orientation="Horizontal">
+                        <materialDesign:PackIcon Kind="printer" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
+                        <TextBlock Text="Print" FontSize="17" VerticalAlignment="Center" Margin="20 0"/>
+                    </StackPanel>
+                </ListViewItem>
+            </ListView>
+            
         </StackPanel>
         <!--Content-->
-        <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" />
+        <ContentControl x:Name="ActiveItem" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="10 50 10 10"/>
 
     </Grid>
 </Window>

@@ -23,13 +23,13 @@
             <TextBlock Text="{Binding Path=MajorName}"></TextBlock>
         </StackPanel>
 
-        <DataGrid Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ElectiveCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+        <DataGrid Background="LightGray" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ElectiveCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Credits" Binding="{Binding Path=Credits}"></DataGridTextColumn>
-                <DataGridCheckBoxColumn  Width="auto" Header="Completed" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
+                <DataGridCheckBoxColumn  Width="auto" Header="Add" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
         </DataGrid>
         

@@ -23,19 +23,11 @@ namespace PlanStudyOptions.WPF.ViewModels
             }
         }
 
-        public BindableCollection<string> Pages { get; set; }
         private string _selectedPage;
         private MajorModel _chosenMajor;
 
         public ShellViewModel(ISqlData sqlData, IEventAggregator eventAggregator)
         {
-            Pages = new BindableCollection<string>
-            {
-                "Completed Courses",
-                "Majors",
-                "Electives",
-                "Print"
-            };
 
             _sqlData = sqlData;
             _eventAggregator = eventAggregator;
@@ -49,16 +41,16 @@ namespace PlanStudyOptions.WPF.ViewModels
             {
                 switch(SelectedPage)
                 {
-                    case "Completed Courses":
+                    case "0":
                         ActivateItem(new SelectCompletedCoursesViewModel(_sqlData));
                         break;
-                    case "Majors":
+                    case "1":
                         ActivateItem(new SelectFutureCoursesViewModel(_sqlData, _eventAggregator));
                         break;
-                    case "Electives":
+                    case "2":
                         ActivateItem(new SelectElectivesViewModel(_sqlData, ChosenMajor));
                         break;
-                    case "Print":
+                    case "3":
                         ActivateItem(new PrintPlanViewModel(_sqlData, ChosenMajor));
                         break;
                 }
@@ -90,6 +82,7 @@ namespace PlanStudyOptions.WPF.ViewModels
                 LoadPage();
             }
         }
+
 
 
 
