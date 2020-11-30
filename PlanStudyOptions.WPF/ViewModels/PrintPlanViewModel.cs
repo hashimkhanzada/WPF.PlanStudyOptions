@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using GalaSoft.MvvmLight.Command;
 using PlanStudyOptionsLibrary.Data;
 using PlanStudyOptionsLibrary.Models;
 using System;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace PlanStudyOptions.WPF.ViewModels
 {
@@ -59,14 +61,26 @@ namespace PlanStudyOptions.WPF.ViewModels
 
         public Grid MainPrint { get; set; }
 
-        public void PrintPage()
+        //public void PrintPage()
+        //{
+        //    PrintDialog printDialog = new PrintDialog();
+        //    if (printDialog.ShowDialog() == true)
+        //    {
+        //        printDialog.PrintVisual(MainPrint, "invoice");
+        //    }
+        //}
+        //TODO - get all future courses, allow removing
+
+        public RelayCommand<Visual> PrintCommand
         {
-            PrintDialog printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
+            get
             {
-                printDialog.PrintVisual(MainPrint, "invoice");
+                return new RelayCommand<Visual>(v =>
+                {
+                    PrintDialog printDlg = new PrintDialog();
+                    printDlg.PrintVisual(v, "Grid Printing.");
+                });
             }
         }
-        //TODO - get all future courses, allow removing
     }
 }

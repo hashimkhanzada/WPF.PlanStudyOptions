@@ -74,6 +74,7 @@ namespace PlanStudyOptions.WPF.ViewModels
 
         public BindableCollection<CourseModel> checkIfCourseCompleted(BindableCollection<CourseModel> courses)
         {
+            //TODO - error if major not selected
             foreach (var course in courses)
             {
                 foreach (var cc in _completedCourses)

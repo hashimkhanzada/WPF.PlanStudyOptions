@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:PlanStudyOptions.WPF.Views"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Grid x:Name="asda">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
@@ -56,6 +56,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="PrintPage">Save</Button>
+        <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Command="{Binding PrintCommand, Mode=OneWay}" CommandParameter="{Binding ElementName=asda, Mode=OneWay}">Save</Button>
     </Grid>
 </UserControl>

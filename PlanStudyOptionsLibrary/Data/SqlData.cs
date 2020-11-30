@@ -111,8 +111,9 @@ namespace PlanStudyOptionsLibrary.Data
         public List<CourseModel> GetPrintCourses(string StudentId, string MajorId, int Year)
         {
             return _db.LoadData<CourseModel, dynamic>("SELECT * FROM FutureCourses"
-                                                      + " INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId " +
-                                                      "WHERE StudentId = @StudentId AND MajorId = @MajorId AND Year = @Year",
+                                                      + " INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId "
+                                                      + "WHERE StudentId = @StudentId AND MajorId = @MajorId AND Year = @Year "
+                                                      + "ORDER BY YEAR, SEMESTER",
                                                  new
                                                  {
                                                      StudentId,

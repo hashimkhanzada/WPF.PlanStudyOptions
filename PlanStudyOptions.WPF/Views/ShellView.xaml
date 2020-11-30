@@ -33,7 +33,7 @@
 
         <StackPanel Orientation="Vertical" Grid.Row="1" Grid.Column="1" Grid.RowSpan="2" Margin="0 0 70 0">
             <!--Select Pages-->
-            <ListBox x:Name="Pages" SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" Margin="0 0 0 50" FontSize="15" />
+            <ListBox x:Name="Pages" SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" FontSize="15" />
         </StackPanel>
         <!--Content-->
         <ContentControl x:Name="ActiveItem" Grid.Row="1" Grid.Column="2" Grid.RowSpan="2" />
