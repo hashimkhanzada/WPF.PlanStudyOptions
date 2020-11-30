@@ -13,6 +13,6 @@ The goal with this new project is to recreate the old one from scratch, while fo
 - [x] Create Class Library
 - [x] Set up Dapper with the base read/write methods
 - [x] Create SQL DataBase Project
-- [ ] Create Stored Procedures
+- [x] Create Stored Procedures
 - [ ] Redesign UI (Material Design XAML)
 - [ ] Allow users to Email/Print study plan
