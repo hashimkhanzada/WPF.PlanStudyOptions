@@ -70,12 +70,13 @@ namespace PlanStudyOptionsLibrary.Data
                                                  true); ;
         }
 
-        public List<CourseModel> GetAllElectiveCourses(string StudentId)
+        public List<CourseModel> GetAllElectiveCourses(string StudentId, string MajorId)
         {
             return _db.LoadData<CourseModel, dynamic>("dbo.spGetAllElectiveCourses",
                                                  new
                                                  {
-                                                     StudentId
+                                                     StudentId,
+                                                     MajorId
                                                  },
                                                  connectionStringName,
                                                  true); ;

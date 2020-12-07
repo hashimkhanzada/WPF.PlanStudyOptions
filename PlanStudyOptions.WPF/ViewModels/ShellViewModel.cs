@@ -10,7 +10,7 @@ using System.Windows;
 
 namespace PlanStudyOptions.WPF.ViewModels
 {
-    public class ShellViewModel : Conductor<object>, IHandle<MajorModel>
+    public class ShellViewModel : Conductor<object>, IHandle<MajorModel>, IHandle<string>
     {
         private readonly ISqlData _sqlData;
         private readonly IEventAggregator _eventAggregator;
@@ -33,6 +33,9 @@ namespace PlanStudyOptions.WPF.ViewModels
             _eventAggregator = eventAggregator;
             
             _eventAggregator.Subscribe(this);
+
+            SelectedPage = "0";
+            LoadPage();
         }
 
         public void LoadPage() 
@@ -42,16 +45,29 @@ namespace PlanStudyOptions.WPF.ViewModels
                 switch(SelectedPage)
                 {
                     case "0":
-                        ActivateItem(new SelectCompletedCoursesViewModel(_sqlData));
+                        ActivateItem(new SelectCompletedCoursesViewModel(_sqlData, _eventAggregator));
                         break;
                     case "1":
                         ActivateItem(new SelectFutureCoursesViewModel(_sqlData, _eventAggregator));
                         break;
                     case "2":
-                        ActivateItem(new SelectElectivesViewModel(_sqlData, ChosenMajor));
+                        if(ChosenMajor != null)
+                        {
+                            ActivateItem(new SelectElectivesViewModel(_sqlData, _eventAggregator, ChosenMajor));
+                            
+                        } else
+                        {
+                            MessageBox.Show("Please select a major");
+                        }
                         break;
                     case "3":
+                        if (ChosenMajor != null)
+                        {
                         ActivateItem(new PrintPlanViewModel(_sqlData, ChosenMajor));
+                        } else
+                        {
+                            MessageBox.Show("Please select a major");
+                        }
                         break;
                 }
             }
@@ -60,6 +76,11 @@ namespace PlanStudyOptions.WPF.ViewModels
         public void Handle(MajorModel message)
         {
             ChosenMajor = message;
+        }
+
+        public void Handle(string message)
+        {
+            SelectedPage = message;
         }
 
         public MajorModel ChosenMajor

@@ -97,13 +97,22 @@ namespace PlanStudyOptions.WPF.ViewModels
 
         public void AddCourses()
         {
-            AddOrDelete(_yearOneCourses);
+            if (SelectedMajor != null)
+            {
+                AddOrDelete(_yearOneCourses);
 
-            AddOrDelete(_yearTwoCourses);
+                AddOrDelete(_yearTwoCourses);
 
-            AddOrDelete(_yearThreeCourses);
+                AddOrDelete(_yearThreeCourses);
 
-            _eventAggregator.PublishOnUIThread(SelectedMajor);
+                _eventAggregator.PublishOnUIThread(SelectedMajor);
+                _eventAggregator.PublishOnUIThread("2");
+            }
+            else
+            {
+                MessageBox.Show("Please select a major");
+            }
+            
 
         }
 
@@ -138,6 +147,8 @@ namespace PlanStudyOptions.WPF.ViewModels
                 }
 
             }
+            
+            
         }
 
     }

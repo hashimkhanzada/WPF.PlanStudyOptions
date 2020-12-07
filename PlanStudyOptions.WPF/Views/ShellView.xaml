@@ -15,7 +15,7 @@
         TextOptions.TextRenderingMode="Auto"        
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}">
-    <Grid Background="LightGray">
+    <Grid>
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="auto"/>
@@ -28,11 +28,10 @@
         </Grid.RowDefinitions>
 
 
-        <StackPanel Background="#FF222222" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+        <StackPanel Background="#7c43bd" Orientation="Vertical" Grid.Row="0" Grid.Column="0" Grid.RowSpan="2">
+            
             <!--Select Pages-->
-            <!--<ListBox Foreground="LightGray" Width="250px" x:Name="Pages" SelectedItem="{Binding Path=SelectedPage, Mode=OneWayToSource}" FontSize="15"
-                     />-->
-            <ListView SelectedIndex="{Binding Path=SelectedPage, Mode=OneWayToSource}" Margin="0 50" Foreground="LightGray" FontFamily="Champagne &amp; Limousines" FontSize="18">
+            <ListView SelectedIndex="{Binding Path=SelectedPage, Mode=TwoWay}" Margin="0 50" Foreground="White" FontSize="18">
                 <ListViewItem Height="60" x:Name="CompletedCourses"  >
                     <StackPanel Orientation="Horizontal">
                         <materialDesign:PackIcon Kind="TickBoxMultipleOutline" Width="30" Height="30" VerticalAlignment="Center" Margin="5"/>
@@ -60,6 +59,7 @@
             </ListView>
             
         </StackPanel>
+        
         <!--Content-->
         <ContentControl x:Name="ActiveItem" Grid.Row="0" Grid.Column="1" Grid.RowSpan="2" Margin="10 50 10 10"/>
 

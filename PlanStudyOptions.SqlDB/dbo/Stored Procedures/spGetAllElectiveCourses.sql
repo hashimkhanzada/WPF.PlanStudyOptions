@@ -1,5 +1,6 @@
 ﻿CREATE PROCEDURE [dbo].[spGetAllElectiveCourses]
-	@StudentId nvarchar(50)
+	@StudentId nvarchar(50),
+	@MajorId nvarchar(50)
 AS
 
 begin
@@ -10,7 +11,7 @@ begin
 		SELECT [FutureCourses].[CourseId]
 			FROM FutureCourses 
 			INNER JOIN Courses ON FutureCourses.CourseId = Courses.CourseId 
-			WHERE StudentId = @StudentId
+			WHERE StudentId = @StudentId AND MajorId = @MajorId
 	)
 	ORDER BY Year, Semester
 

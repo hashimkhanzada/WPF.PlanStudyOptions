@@ -25,7 +25,7 @@ namespace PlanStudyOptionsLibrary.Data
         /// </summary>
         /// <param name="StudentId"></param>
         /// <returns></returns>
-        List<CourseModel> GetAllElectiveCourses(string StudentId);
+        List<CourseModel> GetAllElectiveCourses(string StudentId, string MajorId);
         List<int> GetCreditsCompleted(string StudentId, string MajorId);
         List<int> GetCreditsDue(string StudentId, string MajorId);
         /// <summary>

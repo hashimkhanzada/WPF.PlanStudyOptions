@@ -13,15 +13,16 @@ namespace PlanStudyOptions.WPF.ViewModels
     public class SelectCompletedCoursesViewModel : Screen
     {
         private readonly ISqlData _sqlData;
+        private readonly IEventAggregator _eventAggregator;
         private BindableCollection<CourseModel> _allCourses;
         private List<CompletedCourseModel> _completedCourses;
 
         public BindableCollection<CompletedCourseModel> CompletedCourseModels { get; set; }
 
-        public SelectCompletedCoursesViewModel(ISqlData sqlData)
+        public SelectCompletedCoursesViewModel(ISqlData sqlData, IEventAggregator eventAggregator)
         {
             _sqlData = sqlData;
-
+            _eventAggregator = eventAggregator;
             _allCourses = new BindableCollection<CourseModel>(_sqlData.GetAllCourses());
             _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses(UserName));
 
@@ -76,6 +77,8 @@ namespace PlanStudyOptions.WPF.ViewModels
                     _sqlData.RemoveCompletedCourse(CompletedCourse.StudentId, CompletedCourse.CourseId);
                 }
             }
+
+            _eventAggregator.PublishOnUIThread("1");
         }
 
 

@@ -38,8 +38,12 @@ namespace PlanStudyOptions.WPF.ViewModels
                 PrintYearOne = new BindableCollection<CourseModel>(_sqlData.GetPrintCourses(UserName, major.MajorId, 1));
                 PrintYearTwo = new BindableCollection<CourseModel>(_sqlData.GetPrintCourses(UserName, major.MajorId, 2));
                 PrintYearThree = new BindableCollection<CourseModel>(_sqlData.GetPrintCourses(UserName, major.MajorId, 3));
+
+                MajorName = _major.Name;
             }
         }
+
+        public string MajorName { get; set; }
 
         public BindableCollection<CourseModel> PrintYearThree
         {
@@ -60,16 +64,6 @@ namespace PlanStudyOptions.WPF.ViewModels
         }
 
         public Grid MainPrint { get; set; }
-
-        //public void PrintPage()
-        //{
-        //    PrintDialog printDialog = new PrintDialog();
-        //    if (printDialog.ShowDialog() == true)
-        //    {
-        //        printDialog.PrintVisual(MainPrint, "invoice");
-        //    }
-        //}
-        //TODO - get all future courses, allow removing
 
         public RelayCommand<Visual> PrintCommand
         {

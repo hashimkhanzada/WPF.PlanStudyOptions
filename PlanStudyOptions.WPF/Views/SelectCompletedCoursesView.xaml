@@ -13,7 +13,7 @@
         </Grid.RowDefinitions>
 
         <!-- Courses | DataGrid -->
-        <DataGrid Background="LightGray" Grid.Row="0"  SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="0"  SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Course Code" Binding="{Binding Path=CourseId}"></DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>

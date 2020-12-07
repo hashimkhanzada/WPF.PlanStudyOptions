@@ -20,11 +20,12 @@
         </Grid.ColumnDefinitions>
 
 
-
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
-            <TextBlock Margin="0 2 30 0" FontSize="20">Select Major:</TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="0" Margin="0 0 30 20" FontSize="20"  >Compulsory Courses</TextBlock>
+        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Margin="0 0 30 20" >
             
-            <ComboBox Width="auto" MinWidth="250" SelectedValuePath="Content" ItemsSource="{Binding Majors}"  SelectedItem="{Binding SelectedMajor}" Margin="0 0 70 30" FontSize="15">
+            <TextBlock Margin="0 0 30 0" FontSize="20">Select Major:</TextBlock>
+
+            <ComboBox Width="auto" MinWidth="250" SelectedValuePath="Content" ItemsSource="{Binding Majors}"  SelectedItem="{Binding SelectedMajor}" FontSize="15">
                 <ComboBox.ItemTemplate>
                     <DataTemplate>
                         <TextBlock Text="{Binding Name}"/>
@@ -37,7 +38,7 @@
         <!-- Courses to complete major -->
         <!-- Year 1 -->
         <TextBlock Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" FontWeight="Bold" >Year 1</TextBlock>
-        <DataGrid Background="LightGray" Grid.Column="0" Grid.Row="2" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+        <DataGrid  Grid.Column="0" Grid.Row="2" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
                   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=YearOneCourses}" 
                   SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False"
                   Margin="0 0 20 0">
@@ -50,7 +51,7 @@
 
         <!-- Year 2 -->
         <TextBlock Grid.Column="1" Grid.Row="1" HorizontalAlignment="Center" FontWeight="Bold" >Year 2</TextBlock>
-        <DataGrid Background="LightGray" Grid.Column="1" Grid.Row="2" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+        <DataGrid  Grid.Column="1" Grid.Row="2" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
                   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=YearTwoCourses}" 
                   SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
@@ -62,7 +63,7 @@
 
         <!-- Year 3 -->
         <TextBlock Grid.Column="2" Grid.Row="1" HorizontalAlignment="Center" FontWeight="Bold">Year 3</TextBlock>
-        <DataGrid Background="LightGray" Grid.Column="2" Grid.Row="2" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
+        <DataGrid  Grid.Column="2" Grid.Row="2" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
                   HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Path=YearThreeCourses}" 
                   SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False"
                   Margin="20 0 0 0">
@@ -71,19 +72,7 @@
                 <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Semester" Binding="{Binding Path=Semester}"></DataGridTextColumn>
                 <DataGridCheckBoxColumn Width="auto" Header="Add" Binding="{Binding Path=IsSelected, Mode=TwoWay}"></DataGridCheckBoxColumn>
             </DataGrid.Columns>
-        </DataGrid>
-
-
-
-        <!-- Completed Courses -->
-        <!--<DataGrid Grid.Column="1" Grid.Row="0" SelectedItem="{Binding Path=SelectedCourse, Mode=OneWayToSource}"
-                  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="AllCourses"
-                  SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False" Margin="20 0 0 0">
-            <DataGrid.Columns>
-                <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Course Code" Binding="{Binding Path=CourseId}"></DataGridTextColumn>
-                <DataGridTextColumn IsReadOnly="True" Width="auto"  Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>-->
+        </DataGrid> 
 
         <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" x:Name="AddCourses">Submit</Button>
     </Grid>

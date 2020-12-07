@@ -13,6 +13,7 @@ namespace PlanStudyOptions.WPF.ViewModels
     public class SelectElectivesViewModel : Screen
     {
         private readonly ISqlData _sqlData;
+        private readonly IEventAggregator _eventAggregator;
         private readonly MajorModel _major;
 
         public string UserName { get {
@@ -24,17 +25,18 @@ namespace PlanStudyOptions.WPF.ViewModels
         private int _creditsDue;
         private List<CompletedCourseModel> _completedCourses;
 
-        public SelectElectivesViewModel(ISqlData sqlData, MajorModel major)
+        public SelectElectivesViewModel(ISqlData sqlData, IEventAggregator eventAggregator, MajorModel major)
         {
             _sqlData = sqlData;
+            _eventAggregator = eventAggregator;
             _major = major;
             
             if (major != null)
             {
-                _electiveCourses = new BindableCollection<CourseModel>(_sqlData.GetAllElectiveCourses(UserName));
+                _electiveCourses = new BindableCollection<CourseModel>(_sqlData.GetAllElectiveCourses(UserName, major.MajorId));
                 _completedCourses = new List<CompletedCourseModel>(_sqlData.GetAllCompletedCourses(UserName));
 
-                _creditsCompleted = _sqlData.GetCreditsCompleted(UserName, _major.MajorId).FirstOrDefault();
+                _creditsCompleted = _sqlData.GetCreditsCompleted(UserName, major.MajorId).FirstOrDefault();
                 _creditsDue = 360;
                 MajorName = _major.Name;
             }
@@ -94,8 +96,11 @@ namespace PlanStudyOptions.WPF.ViewModels
             AddOrDelete(_electiveCourses);
             if(_creditsCompleted < 360)
             {
-                ElectiveCourses = new BindableCollection<CourseModel>(_sqlData.GetAllElectiveCourses(UserName));
+                ElectiveCourses = new BindableCollection<CourseModel>(_sqlData.GetAllElectiveCourses(UserName, _major.MajorId));
                 CreditsCompleted = _sqlData.GetCreditsCompleted(UserName, _major.MajorId).FirstOrDefault();
+            } else
+            {
+                _eventAggregator.PublishOnUIThread("3");
             }
         }
 

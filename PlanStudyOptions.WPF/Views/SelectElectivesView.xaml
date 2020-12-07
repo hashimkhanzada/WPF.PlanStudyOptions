@@ -23,7 +23,7 @@
             <TextBlock Text="{Binding Path=MajorName}"></TextBlock>
         </StackPanel>
 
-        <DataGrid Background="LightGray" Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ElectiveCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" x:Name="ElectiveCourses" SelectionMode="Single" CanUserAddRows="False" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn IsReadOnly="True" Width="*" Header="Name" Binding="{Binding Path=Name}"></DataGridTextColumn>
                 <DataGridTextColumn IsReadOnly="True" Width="auto" Header="Year" Binding="{Binding Path=Year}"></DataGridTextColumn>
